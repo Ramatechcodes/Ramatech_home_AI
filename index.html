@@ -14,6 +14,23 @@ content="yes">
 <meta name="mobile-web-app-capable"
 content="yes">
 
+<link rel="manifest" href="/manifest.json">
+
+<meta name="theme-color" content="#0f172a">
+
+<link
+  rel="apple-touch-icon"
+  href="/icons/apple-touch-icon.png">
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="RAMATECH AI">
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent">
+
+
 <title>RAMATECH HOME AI</title>
 
 
@@ -2945,6 +2962,19 @@ setInterval(
 
 </script>
 
+
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", async () => {
+    try {
+      await navigator.serviceWorker.register("/sw.js");
+      console.log("RAMATECH HOME AI PWA is ready.");
+    } catch (error) {
+      console.error("Service worker registration failed:", error);
+    }
+  });
+}
+</script>
 
 </body>
 
