@@ -1,531 +1,3020 @@
+
 <!DOCTYPE html>
-<html lang="en">
+
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="theme-color" content="#0f172a">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<meta name="apple-mobile-web-app-capable"
+content="yes">
+
+<meta name="mobile-web-app-capable"
+content="yes">
+
 <link rel="manifest" href="/manifest.json">
-<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
-<meta name="apple-mobile-web-app-title" content="RAMATECH AI">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="theme-color" content="#0f172a">
+
+<link
+  rel="apple-touch-icon"
+  href="/icons/apple-touch-icon.png">
+
+<meta
+  name="apple-mobile-web-app-title"
+  content="RAMATECH AI">
+
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent">
+
+
 <title>RAMATECH HOME AI</title>
+
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:#0f172a;color:#fff;text-align:center;-webkit-text-size-adjust:100%}
-.container{width:100%;max-width:680px;margin:auto;padding:18px}
-h1{color:#38bdf8;font-size:30px;margin-bottom:5px}
-.subtitle{color:#cbd5e1}
-.card{background:#1e293b;border-radius:18px;padding:20px;margin:15px 0;box-shadow:0 5px 20px rgba(0,0,0,.25)}
-button,select,input{font:inherit}
-button{appearance:none;-webkit-appearance:none;border:0;border-radius:14px;padding:14px 16px;margin:6px;font-size:16px;font-weight:bold;cursor:pointer;min-height:48px}
-button:active{transform:scale(.98)}
-.on{background:#22c55e;color:#fff}.off{background:#ef4444;color:#fff}
-.all{background:#38bdf8;color:#020617;width:90%}
-.voice{background:#06b6d4;color:white;width:95%;font-size:18px;min-height:56px}
-.welcomeButton{background:#8b5cf6;color:#fff;width:95%;font-size:18px;min-height:56px}
-.stopButton{background:#475569;color:white;width:95%}
-.welcome{background:#020617;border:1px solid #38bdf8;color:#bae6fd;padding:18px;border-radius:15px;line-height:1.7}
-.status{font-size:17px;margin:10px}
-#voiceStatus{color:#facc15;font-weight:bold;line-height:1.5}
-#transcript{background:#020617;padding:15px;border-radius:10px;margin-top:10px;min-height:30px;overflow-wrap:anywhere}
-#response{color:#86efac;margin-top:15px;font-weight:bold;line-height:1.6;overflow-wrap:anywhere}
-#systemStatus{font-weight:bold;line-height:1.6}
-#browserStatus{color:#fbbf24;font-size:14px;line-height:1.5}
-label{display:block;text-align:left;margin:16px 0 7px;font-weight:bold;color:#e2e8f0}
-select{display:block;width:100%;padding:12px;border-radius:10px;border:1px solid #64748b;background:#f8fafc;color:#0f172a;min-height:46px}
-input[type=range]{width:100%;accent-color:#38bdf8}
-input[type=text]{width:100%;padding:13px;border-radius:10px;border:1px solid #64748b;background:#f8fafc;color:#0f172a}
-.voiceGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.voiceGrid button{width:100%;margin:0}
-.settingValue{color:#38bdf8;font-weight:bold}
-.hint{font-size:13px;color:#cbd5e1;line-height:1.5;text-align:left}
-.small{font-size:14px;color:#cbd5e1;line-height:1.5}
-.download{margin:25px auto;padding:22px;max-width:650px;background:#0f172a;border:1px solid #38bdf8;border-radius:18px}
-.download a{display:inline-block;padding:14px 20px;background:#38bdf8;color:#0f172a;font-weight:bold;text-decoration:none;border-radius:10px}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+    background: #0f172a;
+
+    color: white;
+
+    text-align: center;
+
+    -webkit-text-size-adjust: 100%;
+
+}
+
+
+.container {
+
+    width: 100%;
+
+    max-width: 620px;
+
+    margin: auto;
+
+    padding: 18px;
+
+}
+
+
+h1 {
+
+    color: #38bdf8;
+
+    font-size: 30px;
+
+    margin-bottom: 5px;
+
+}
+
+
+.subtitle {
+
+    color: #cbd5e1;
+
+}
+
+
+.card {
+
+    background: #1e293b;
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    margin: 15px 0;
+
+    box-shadow:
+    0 5px 20px rgba(0,0,0,0.25);
+
+}
+
+
+button {
+
+    appearance: none;
+
+    -webkit-appearance: none;
+
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 16px 20px;
+
+    margin: 6px;
+
+    font-size: 17px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    min-height: 52px;
+
+}
+
+
+button:active {
+
+    transform: scale(0.97);
+
+}
+
+
+.on {
+
+    background: #22c55e;
+
+    color: white;
+
+}
+
+
+.off {
+
+    background: #ef4444;
+
+    color: white;
+
+}
+
+
+.all {
+
+    background: #38bdf8;
+
+    color: #020617;
+
+    width: 90%;
+
+}
+
+
+.voice {
+
+    background: #06b6d4;
+
+    color: white;
+
+    width: 95%;
+
+    font-size: 20px;
+
+    min-height: 60px;
+
+}
+
+
+.welcomeButton {
+
+    background: #8b5cf6;
+
+    color: white;
+
+    width: 95%;
+
+    font-size: 19px;
+
+    min-height: 60px;
+
+}
+
+
+.stopButton {
+
+    background: #475569;
+
+    color: white;
+
+    width: 95%;
+
+}
+
+
+.welcome {
+
+    background: #020617;
+
+    border: 1px solid #38bdf8;
+
+    color: #bae6fd;
+
+    padding: 18px;
+
+    border-radius: 15px;
+
+    line-height: 1.7;
+
+}
+
+
+.status {
+
+    font-size: 18px;
+
+    margin: 10px;
+
+}
+
+
+#voiceStatus {
+
+    color: #facc15;
+
+    font-weight: bold;
+
+    line-height: 1.5;
+
+}
+
+
+#transcript {
+
+    background: #020617;
+
+    padding: 15px;
+
+    border-radius: 10px;
+
+    margin-top: 10px;
+
+    min-height: 30px;
+
+    word-wrap: break-word;
+
+}
+
+
+#response {
+
+    color: #86efac;
+
+    margin-top: 15px;
+
+    font-weight: bold;
+
+    line-height: 1.6;
+
+}
+
+
+#systemStatus {
+
+    font-weight: bold;
+
+}
+
+
+#browserStatus {
+
+    color: #fbbf24;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+
+}
+
+
 </style>
+
 </head>
+
+
 <body>
+
+
 <div class="container">
-  <h1>RAMATECH HOME AI</h1>
-  <p class="subtitle">ESP32 SMART HOME — PHASE 6B REMOTE CLOUD + VOICE</p>
 
-  <div class="card" id="remoteCard">
-    <h2>🌍 REMOTE INTERNET CONTROL</h2>
-    <p id="cloudStatus">🔴 Not connected to RAMATECH Cloud</p>
-    <button class="voice" onclick="connectCloud()">🔐 CONNECT TO RAMATECH CLOUD</button>
-    <p class="small">Use your RAMATECH Cloud access code.</p>
-  </div>
 
-  <div class="card welcome">
-    <h2>🤖 WELCOME BOSS</h2>
-    <p>Hi Boss, my name is <strong>Alexa</strong>. I am your RAMATECH HOME AI smart home assistant.</p>
-    <p>I was designed, programmed and developed by <strong>Ramatechcode Lab</strong> to make life very easy for you.</p>
-    <p>I can control your home appliances:</p>
-    <p>💡 Light<br>💡 Rope Light<br>🌀 Fan<br>📺 Television</p>
-    <p>Press the button below to hear my welcome message.</p>
-  </div>
-  <button class="welcomeButton" onclick="playWelcome()">🔊 HEAR ALEXA WELCOME</button>
+<h1>RAMATECH HOME AI</h1>
 
-  <div class="card">
-    <h2>💡 LIGHT</h2><div id="lightStatus" class="status">Waiting for device...</div>
-    <button class="on" onclick="control('light','on')">TURN ON</button>
-    <button class="off" onclick="control('light','off')">TURN OFF</button>
-  </div>
-  <div class="card">
-    <h2>💡 ROPE LIGHT</h2><div id="ropeStatus" class="status">Waiting for device...</div>
-    <button class="on" onclick="control('rope','on')">TURN ON</button>
-    <button class="off" onclick="control('rope','off')">TURN OFF</button>
-  </div>
-  <div class="card">
-    <h2>🌀 FAN</h2><div id="fanStatus" class="status">Waiting for device...</div>
-    <button class="on" onclick="control('fan','on')">TURN ON</button>
-    <button class="off" onclick="control('fan','off')">TURN OFF</button>
-  </div>
-  <div class="card">
-    <h2>📺 TV</h2><div id="tvStatus" class="status">Waiting for device...</div>
-    <button class="on" onclick="control('tv','on')">TURN ON</button>
-    <button class="off" onclick="control('tv','off')">TURN OFF</button>
-  </div>
-  <div class="card">
-    <h2>⚡ ALL DEVICES</h2>
-    <button class="all" onclick="allControl('on')">ALL ON</button>
-    <button class="all" onclick="allControl('off')">ALL OFF</button>
-  </div>
 
-  <div class="card">
-    <h2>🎤 ALEXA VOICE CONTROL</h2>
-    <p>Tap the microphone and say: <strong>“Alexa, turn on the fan.”</strong></p>
-    <button class="voice" onclick="startVoice()">🎤 SPEAK TO ALEXA</button>
-    <button class="stopButton" onclick="stopVoice()">⏹ STOP VOICE</button>
-    <p id="voiceStatus">Ready Boss. Press SPEAK TO ALEXA.</p>
-    <div id="transcript">You said: Waiting...</div>
-    <div id="response">RAMATECH HOME AI: Ready Boss.</div>
-    <div id="browserStatus">Checking iPhone voice support...</div>
-  </div>
+<p class="subtitle">
 
-  <div class="card" id="speechSettings">
-    <h2>🗣️ VOICE & SPEECH SETTINGS</h2>
-    <p class="hint">Choose an available iPhone voice, preferred accent, speaking speed and pitch. Changes apply to welcome messages and spoken responses.</p>
+ESP32 SMART HOME — PHASE 6B REMOTE CLOUD + VOICE
 
-    <label for="accentSelect">English accent preference</label>
-    <select id="accentSelect">
-      <option value="any">Automatic / any English accent</option>
-      <option value="en-US">American English (US)</option>
-      <option value="en-GB">British English (UK)</option>
-    </select>
+</p>
 
-    <label for="genderSelect">Voice preference</label>
-    <select id="genderSelect">
-      <option value="any">Any voice</option>
-      <option value="female">Female-sounding (if available)</option>
-      <option value="male">Male-sounding (if available)</option>
-    </select>
 
-    <label for="voiceSelect">Voice available on this iPhone</label>
-    <select id="voiceSelect">
-      <option value="">Automatic voice selection</option>
-    </select>
-    <p class="hint">iOS may provide voices with no gender label. If a voice is selected manually, it takes priority over the accent/gender preferences.</p>
+<div class="card" id="remoteCard">
 
-    <label for="rateRange">Speaking speed: <span id="rateValue" class="settingValue">0.70×</span></label>
-    <input id="rateRange" type="range" min="0.40" max="1.20" step="0.05" value="0.70">
-    <p class="hint">Lower is slower. Recommended starting point: 0.65–0.75.</p>
+<h2>🌍 REMOTE INTERNET CONTROL</h2>
 
-    <label for="pitchRange">Voice pitch: <span id="pitchValue" class="settingValue">1.00</span></label>
-    <input id="pitchRange" type="range" min="0.60" max="1.60" step="0.05" value="1.00">
-    <p class="hint">Lower values sound lower; higher values sound higher. The available effect depends on the selected iOS voice.</p>
+<p id="cloudStatus">🔴 Not connected to RAMATECH Cloud</p>
 
-    <div class="voiceGrid">
-      <button class="voice" onclick="testVoice()">🔊 TEST VOICE</button>
-      <button class="on" onclick="saveVoiceSettings()">💾 SAVE SETTINGS</button>
-    </div>
-    <button class="stopButton" style="width:100%;margin:12px 0 0" onclick="resetVoiceSettings()">RESET DEFAULTS</button>
-    <p id="settingsStatus" class="small">Default speech speed is 0.70×.</p>
-  </div>
+<button class="voice" onclick="connectCloud()">🔐 CONNECT TO RAMATECH CLOUD</button>
 
-  <div class="card">
-    <h3>⚙️ SYSTEM STATUS</h3>
-    <div id="systemStatus">Connecting...</div>
-  </div>
+<p style="font-size:14px;color:#cbd5e1">Use your RAMATECH Cloud access code.</p>
+
 </div>
 
-<section class="download">
-  <h2 style="color:#38bdf8">RAMATECH HOME AI Android App</h2>
-  <p>Download the RAMATECH HOME AI Android application and access your smart home dashboard from your phone.</p>
-  <a href="/downloads/ramatech-home-ai.apk" download="ramatech-home-ai.apk">Download Android App (APK)</a>
-  <p class="small">After downloading, open the APK on your Android phone and follow the installation instructions.</p>
-</section>
+<!-- ================================================= -->
+<!-- WELCOME -->
+<!-- ================================================= -->
+
+<div class="card welcome">
+
+<h2>🤖 WELCOME BOSS</h2>
+
+
+<p>
+
+Hi Boss, my name is <strong>Alexa</strong>.
+
+I am your Ramatech home AI smart home assistant.
+
+</p>
+
+
+<p>
+
+I was designed, programmed and developed by
+
+<strong>Ramatechcode Lab</strong>
+
+to make life very easy for you.
+
+</p>
+
+
+<p>
+
+I can currently control your appliances such as:
+
+<br>
+
+💡 Light
+
+<br>
+
+💡 Rope Light
+
+<br>
+
+🌀 Fan
+
+<br>
+
+📺 Television
+
+</p>
+
+
+<p>
+
+Press the button below to hear my welcome message.
+
+</p>
+
+
+</div>
+
+
+<button
+
+class="welcomeButton"
+
+onclick="playWelcome()">
+
+🔊 HEAR ALEXA WELCOME
+
+</button>
+
+
+<!-- ================================================= -->
+<!-- LIGHT -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>💡 LIGHT</h2>
+
+
+<div id="lightStatus"
+class="status">
+
+Checking...
+
+</div>
+
+
+<button
+class="on"
+onclick="control('light','on')">
+
+TURN ON
+
+</button>
+
+
+<button
+class="off"
+onclick="control('light','off')">
+
+TURN OFF
+
+</button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- ROPE -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>💡 ROPE LIGHT</h2>
+
+
+<div id="ropeStatus"
+class="status">
+
+Checking...
+
+</div>
+
+
+<button
+class="on"
+onclick="control('rope','on')">
+
+TURN ON
+
+</button>
+
+
+<button
+class="off"
+onclick="control('rope','off')">
+
+TURN OFF
+
+</button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- FAN -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>🌀 FAN</h2>
+
+
+<div id="fanStatus"
+class="status">
+
+Checking...
+
+</div>
+
+
+<button
+class="on"
+onclick="control('fan','on')">
+
+TURN ON
+
+</button>
+
+
+<button
+class="off"
+onclick="control('fan','off')">
+
+TURN OFF
+
+</button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- TV -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>📺 TV</h2>
+
+
+<div id="tvStatus"
+class="status">
+
+Checking...
+
+</div>
+
+
+<button
+class="on"
+onclick="control('tv','on')">
+
+TURN ON
+
+</button>
+
+
+<button
+class="off"
+onclick="control('tv','off')">
+
+TURN OFF
+
+</button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- ALL DEVICES -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>⚡ ALL DEVICES</h2>
+
+
+<button
+class="all"
+onclick="allControl('on')">
+
+ALL ON
+
+</button>
+
+
+<button
+class="all"
+onclick="allControl('off')">
+
+ALL OFF
+
+</button>
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- VOICE -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h2>🎤 ALEXA VOICE CONTROL</h2>
+
+
+<p>
+
+Tap the microphone and say:
+
+</p>
+
+
+<p>
+
+<strong>
+
+"Alexa, turn on the fan."
+
+</strong>
+
+</p>
+
+
+<button
+
+class="voice"
+
+onclick="startVoice()">
+
+🎤 SPEAK TO ALEXA
+
+</button>
+
+
+<button
+
+class="stopButton"
+
+onclick="stopVoice()">
+
+⏹ STOP VOICE
+
+</button>
+
+
+<p id="voiceStatus">
+
+Ready Boss. Press SPEAK TO ALEXA.
+
+</p>
+
+
+<div id="transcript">
+
+You said: Waiting...
+
+</div>
+
+
+<div id="response">
+
+RAMATECH HOME AI: Ready Boss.
+
+</div>
+
+
+<div id="browserStatus">
+
+Checking iPhone voice support...
+
+</div>
+
+
+</div>
+
+
+<!-- ================================================= -->
+<!-- SYSTEM STATUS -->
+<!-- ================================================= -->
+
+<div class="card">
+
+<h3>⚙️ SYSTEM STATUS</h3>
+
+
+<div id="systemStatus">
+
+Connecting...
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 <script>
-"use strict";
 
-// Cloud connection and appliance state
+
+// =====================================================
+// VARIABLES
+// =====================================================
+
 let recognition = null;
+
 let recognitionRunning = false;
+
 let speechSpeaking = false;
+
+
+// =====================================================
+// FIND SPEECH RECOGNITION
+// =====================================================
+
+const SpeechRecognitionAPI =
+
+    window.SpeechRecognition ||
+
+    window.webkitSpeechRecognition;
+
+
+// =====================================================
+// DEVICE CONTROL
+// =====================================================
+
 let cloudSocket = null;
 let cloudConnected = false;
-let remoteStatus = {light:false, rope:false, fan:false, tv:false, online:false};
 let cloudAccessCode = sessionStorage.getItem("RAMATECH_ACCESS_CODE") || "";
 const CLOUD_WS_URL = (location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/ws";
-const SpeechRecognitionAPI = window.SpeechRecognition || window.webkitSpeechRecognition;
-const SETTINGS_KEY = "RAMATECH_HOME_AI_VOICE_SETTINGS";
-let availableVoices = [];
-
-const $ = id => document.getElementById(id);
 
 function setCloudStatus(text, good=false) {
-  $("cloudStatus").textContent = (good ? "🟢 " : "🔴 ") + text;
+    const el = document.getElementById("cloudStatus");
+    if (el) el.innerHTML = good ? "🟢 " + text : "🔴 " + text;
 }
 
 function connectCloud() {
-  if (!cloudAccessCode) cloudAccessCode = prompt("Enter your RAMATECH HOME AI access code:") || "";
-  if (!cloudAccessCode) { setCloudStatus("Access code required"); return; }
-  sessionStorage.setItem("RAMATECH_ACCESS_CODE", cloudAccessCode);
-  if (cloudSocket) { try { cloudSocket.close(); } catch(e) {} }
-  setCloudStatus("Connecting...");
-  cloudSocket = new WebSocket(CLOUD_WS_URL);
-  cloudSocket.onopen = () => cloudSocket.send(JSON.stringify({type:"auth", role:"browser", code:cloudAccessCode}));
-  cloudSocket.onmessage = event => {
-    try {
-      const msg = JSON.parse(event.data);
-      if (msg.type === "auth_ok") {
-        cloudConnected = true;
-        setCloudStatus("RAMATECH Cloud connected", true);
-        requestCloudStatus();
-      } else if (msg.type === "auth_error") {
+    if (!cloudAccessCode) {
+        cloudAccessCode = prompt("Enter your RAMATECH HOME AI access code:") || "";
+    }
+    if (!cloudAccessCode) {
+        setCloudStatus("Access code required");
+        return;
+    }
+    sessionStorage.setItem("RAMATECH_ACCESS_CODE", cloudAccessCode);
+    if (cloudSocket) { try { cloudSocket.close(); } catch(e) {} }
+    setCloudStatus("Connecting...");
+    cloudSocket = new WebSocket(CLOUD_WS_URL);
+    cloudSocket.onopen = function() {
+        cloudSocket.send(JSON.stringify({type:"auth", role:"browser", code:cloudAccessCode}));
+    };
+    cloudSocket.onmessage = function(event) {
+        try {
+            const msg = JSON.parse(event.data);
+            if (msg.type === "auth_ok") {
+                cloudConnected = true;
+                setCloudStatus("RAMATECH Cloud connected", true);
+                requestCloudStatus();
+            } else if (msg.type === "auth_error") {
+                cloudConnected = false;
+                sessionStorage.removeItem("RAMATECH_ACCESS_CODE");
+                cloudAccessCode = "";
+                setCloudStatus("Wrong access code");
+            } else if (msg.type === "status") {
+                renderRemoteStatus(msg);
+            } else if (msg.type === "device_offline") {
+                cloudConnected = true;
+                setCloudStatus("Cloud connected, ESP32 is offline");
+                document.getElementById("systemStatus").innerHTML = "🔴 ESP32 OFFLINE";
+            } else if (msg.type === "command_result") {
+                if (msg.ok) {
+                    speak(msg.message || "Alright Boss. Command completed.");
+                } else {
+                    speak(msg.message || "Sorry Boss. The command could not be completed.");
+                }
+                requestCloudStatus();
+            }
+        } catch(e) { console.log("Cloud message error", e); }
+    };
+    cloudSocket.onclose = function() {
         cloudConnected = false;
-        sessionStorage.removeItem("RAMATECH_ACCESS_CODE");
-        cloudAccessCode = "";
-        setCloudStatus("Wrong access code");
-      } else if (msg.type === "status") {
-        renderRemoteStatus(msg);
-      } else if (msg.type === "device_offline") {
-        setCloudStatus("Cloud connected, ESP32 is offline");
-        $("systemStatus").textContent = "🔴 ESP32 OFFLINE";
-      } else if (msg.type === "command_result") {
-        speak(msg.ok ? (msg.message || "Alright Boss. Command completed.") : (msg.message || "Sorry Boss. The command could not be completed."));
-        requestCloudStatus();
-      }
-    } catch(e) { console.error("Cloud message error", e); }
-  };
-  cloudSocket.onclose = () => { cloudConnected = false; setCloudStatus("Cloud connection closed"); };
-  cloudSocket.onerror = () => { cloudConnected = false; setCloudStatus("Cloud connection error"); };
+        setCloudStatus("Cloud connection closed");
+    };
+    cloudSocket.onerror = function() {
+        cloudConnected = false;
+        setCloudStatus("Cloud connection error");
+    };
 }
 
 function sendCloud(payload) {
-  if (!cloudSocket || cloudSocket.readyState !== WebSocket.OPEN || !cloudConnected) {
-    setCloudStatus("Please connect to RAMATECH Cloud first");
-    speak("Sorry Boss. The remote cloud connection is not ready. Press Connect to RAMATECH Cloud first.");
-    return Promise.reject(new Error("Cloud not connected"));
-  }
-  cloudSocket.send(JSON.stringify(payload));
-  return Promise.resolve("sent");
-}
-function control(device,state) {
-  return sendCloud({type:"command",deviceId:"RAMATECH_HOME_01",device,state})
-    .then(() => { setTimeout(requestCloudStatus,350); return true; })
-    .catch(() => false);
-}
-function allControl(state) {
-  return sendCloud({type:"all",deviceId:"RAMATECH_HOME_01",state})
-    .then(() => { setTimeout(requestCloudStatus,350); return true; })
-    .catch(() => false);
-}
-function requestCloudStatus() {
-  if (!cloudSocket || cloudSocket.readyState !== WebSocket.OPEN || !cloudConnected) return Promise.reject(new Error("Cloud not connected"));
-  cloudSocket.send(JSON.stringify({type:"status_request",deviceId:"RAMATECH_HOME_01"}));
-  return Promise.resolve();
-}
-function renderRemoteStatus(data) {
-  remoteStatus = {...remoteStatus, ...data};
-  ["light","rope","fan","tv"].forEach(key => {
-    $(key+"Status").textContent = data[key] ? "🟢 ON" : "🔴 OFF";
-  });
-  $("systemStatus").textContent = data.online ? "🟢 ESP32 ONLINE" : "🔴 ESP32 OFFLINE";
-}
-function updateStatus() {
-  if (cloudConnected) requestCloudStatus().catch(()=>{});
-  else $("systemStatus").textContent = "🟠 CLOUD NOT CONNECTED";
-}
-
-// Speech voice selection and saved preferences
-function currentSettings() {
-  return {
-    accent:$("accentSelect").value,
-    gender:$("genderSelect").value,
-    voiceURI:$("voiceSelect").value,
-    rate:Number($("rateRange").value),
-    pitch:Number($("pitchRange").value)
-  };
-}
-function updateSliderLabels() {
-  $("rateValue").textContent = Number($("rateRange").value).toFixed(2) + "×";
-  $("pitchValue").textContent = Number($("pitchRange").value).toFixed(2);
-}
-function loadVoiceSettings() {
-  try {
-    const s = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "null");
-    if (s) {
-      if (s.accent) $("accentSelect").value = s.accent;
-      if (s.gender) $("genderSelect").value = s.gender;
-      if (typeof s.rate === "number") $("rateRange").value = String(s.rate);
-      if (typeof s.pitch === "number") $("pitchRange").value = String(s.pitch);
+    if (!cloudSocket || cloudSocket.readyState !== WebSocket.OPEN || !cloudConnected) {
+        speak("Sorry Boss. The remote cloud connection is not ready. Press CONNECT TO RAMATECH CLOUD first.");
+        return Promise.reject(new Error("Cloud not connected"));
     }
-  } catch(e) { console.warn("Could not load voice settings",e); }
-  updateSliderLabels();
+    cloudSocket.send(JSON.stringify(payload));
+    return Promise.resolve("sent");
 }
-function saveVoiceSettings() {
-  try {
-    localStorage.setItem(SETTINGS_KEY, JSON.stringify(currentSettings()));
-    $("settingsStatus").textContent = "✅ Voice preferences saved in this browser on this iPhone.";
-  } catch(e) {
-    $("settingsStatus").textContent = "Browser storage unavailable. Settings will apply until you close the page.";
-  }
-  refreshVoiceList();
+
+function control(device, state) {
+    return sendCloud({type:"command", deviceId:"RAMATECH_HOME_01", device:device, state:state});
 }
-function resetVoiceSettings() {
-  $("accentSelect").value = "any";
-  $("genderSelect").value = "any";
-  $("voiceSelect").value = "";
-  $("rateRange").value = "0.70";
-  $("pitchRange").value = "1.00";
-  updateSliderLabels();
-  saveVoiceSettings();
-  speak("Voice settings have been reset. I will speak more slowly, Boss.");
+
+function allControl(state) {
+    return sendCloud({type:"all", deviceId:"RAMATECH_HOME_01", state:state});
 }
-function inferredGender(voice) {
-  const n = (voice.name || "").toLowerCase();
-  if (/\b(female|woman|samantha|victoria|karen|moira|tessa|fiona|zira|ava|susan|serena|kate|allison|joanna|salli|amy|emma|libby|sonia|aria|jenny|natasha)\b/.test(n)) return "female";
-  if (/\b(male|man|daniel|alex|fred|david|james|george|oliver|thomas|arthur|guy|brian|ryan|aaron)\b/.test(n)) return "male";
-  return "unknown";
+
+function requestCloudStatus() {
+    return sendCloud({type:"status_request", deviceId:"RAMATECH_HOME_01"});
 }
-function refreshVoiceList() {
-  if (!("speechSynthesis" in window)) {
-    $("settingsStatus").textContent = "This browser does not support text-to-speech.";
-    return;
-  }
-  availableVoices = window.speechSynthesis.getVoices() || [];
-  const select = $("voiceSelect");
-  const oldValue = select.value;
-  select.innerHTML = "";
-  const auto = document.createElement("option");
-  auto.value = "";
-  auto.textContent = "Automatic voice selection";
-  select.appendChild(auto);
-  availableVoices.forEach((v,i) => {
-    const option = document.createElement("option");
-    option.value = v.voiceURI || String(i);
-    option.textContent = v.name + " (" + v.lang + ")";
-    select.appendChild(option);
-  });
-  let wanted = oldValue;
-  try {
-    const saved = JSON.parse(localStorage.getItem(SETTINGS_KEY) || "null");
-    if (!wanted && saved && saved.voiceURI) wanted = saved.voiceURI;
-  } catch(e) {}
-  if (wanted && Array.from(select.options).some(o => o.value === wanted)) select.value = wanted;
+
+function renderRemoteStatus(data) {
+    document.getElementById("lightStatus").innerHTML = data.light ? "🟢 ON" : "🔴 OFF";
+    document.getElementById("ropeStatus").innerHTML = data.rope ? "🟢 ON" : "🔴 OFF";
+    document.getElementById("fanStatus").innerHTML = data.fan ? "🟢 ON" : "🔴 OFF";
+    document.getElementById("tvStatus").innerHTML = data.tv ? "🟢 ON" : "🔴 OFF";
+    document.getElementById("systemStatus").innerHTML = data.online ? "🟢 ESP32 ONLINE" : "🔴 ESP32 OFFLINE";
 }
-function chooseVoice(settings) {
-  if (!availableVoices.length) availableVoices = window.speechSynthesis.getVoices() || [];
-  if (settings.voiceURI) {
-    const selected = availableVoices.find(v => v.voiceURI === settings.voiceURI);
-    if (selected) return selected;
-  }
-  let candidates = availableVoices.filter(v => (v.lang || "").toLowerCase().startsWith("en"));
-  if (settings.accent === "en-US") candidates = candidates.filter(v => (v.lang || "").toLowerCase().startsWith("en-us"));
-  if (settings.accent === "en-GB") candidates = candidates.filter(v => (v.lang || "").toLowerCase().startsWith("en-gb"));
-  if (settings.gender !== "any") {
-    const matched = candidates.filter(v => inferredGender(v) === settings.gender);
-    if (matched.length) candidates = matched;
-  }
-  return candidates[0] || availableVoices[0] || null;
+
+function updateStatus() {
+    if (cloudConnected) requestCloudStatus();
+    else document.getElementById("systemStatus").innerHTML = "🟠 CLOUD NOT CONNECTED";
 }
+
+// =====================================================
+// TEXT TO SPEECH
+// =====================================================
+
 function speak(message) {
-  $("response").textContent = "RAMATECH HOME AI: " + message;
-  if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) {
-    $("voiceStatus").textContent = "❌ Text-to-speech is not available in this browser.";
-    return;
-  }
-  window.speechSynthesis.cancel();
-  const settings = currentSettings();
-  const utterance = new SpeechSynthesisUtterance(message);
-  utterance.rate = settings.rate;
-  utterance.pitch = settings.pitch;
-  utterance.volume = 1;
-  const voice = chooseVoice(settings);
-  if (voice) {
-    utterance.voice = voice;
-    utterance.lang = voice.lang || "en-US";
-  } else {
-    utterance.lang = settings.accent === "any" ? "en-US" : settings.accent;
-  }
-  utterance.onstart = () => { speechSpeaking = true; $("voiceStatus").textContent = "🔊 Alexa is speaking..."; };
-  utterance.onend = () => { speechSpeaking = false; $("voiceStatus").textContent = "Ready Boss. Press SPEAK TO ALEXA."; };
-  utterance.onerror = event => { speechSpeaking = false; $("voiceStatus").textContent = "❌ Phone could not play the voice: " + event.error; };
-  window.speechSynthesis.speak(utterance);
-}
-function testVoice() {
-  // A user tap on this button also allows iOS to start speech playback.
-  speak("Hello Boss. This is RAMATECH HOME AI. I am speaking slowly so you can understand me clearly. You can change my voice, accent, speed and pitch in the settings.");
-}
-function playWelcome() {
-  speak("Hi Boss. My name is Alexa. I am your RAMATECH HOME AI smart home assistant. I was designed, programmed and developed by Ramatechcode Lab to make life very easy for you. I can control your light, rope light, fan and television. I am ready to assist you, Boss.");
-}
 
-// Speech recognition
-function setupRecognition() {
-  if (!SpeechRecognitionAPI) {
-    $("browserStatus").textContent = "❌ Speech recognition is not available in this browser. Try Safari on iPhone or use the dashboard buttons.";
-    return false;
-  }
-  recognition = new SpeechRecognitionAPI();
-  recognition.lang = $("accentSelect").value === "any" ? "en-US" : $("accentSelect").value;
-  recognition.continuous = false;
-  recognition.interimResults = false;
-  recognition.maxAlternatives = 1;
-  recognition.onstart = () => {
-    recognitionRunning = true;
-    $("voiceStatus").textContent = "🎤 Listening Boss... Speak now.";
-    $("browserStatus").textContent = "🟢 Microphone is listening.";
-  };
-  recognition.onresult = event => {
-    recognitionRunning = false;
-    const transcript = Array.from(event.results).map(r => r[0].transcript).join(" ").toLowerCase().trim();
-    $("transcript").textContent = "You said: " + transcript;
-    if (!transcript) { speak("Sorry Boss. I could not hear the command."); return; }
-    $("voiceStatus").textContent = "🧠 Processing...";
-    processVoiceCommand(transcript);
-  };
-  recognition.onerror = event => {
-    recognitionRunning = false;
-    const messages = {
-      "not-allowed":"Microphone permission is blocked. Allow microphone access for this website in your iPhone settings.",
-      "service-not-allowed":"The speech recognition service is unavailable in this browser.",
-      "no-speech":"I did not hear you, Boss. Tap the microphone and speak clearly.",
-      "audio-capture":"I cannot access your iPhone microphone.",
-      "network":"Speech recognition needs an internet connection.",
-      "aborted":"Voice recognition was stopped."
+
+    document.getElementById(
+
+        "response"
+
+    ).innerHTML =
+
+        "RAMATECH HOME AI: " +
+
+        message;
+
+
+    document.getElementById(
+
+        "voiceStatus"
+
+    ).innerHTML =
+
+        "🔊 Alexa is speaking...";
+
+
+    if (
+
+        !("speechSynthesis" in window)
+
+    ) {
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "❌ Phone speech is not available.";
+
+        return;
+
+    }
+
+
+    // Stop previous speech
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+
+        new SpeechSynthesisUtterance(
+
+            message
+
+        );
+
+
+    speech.lang = "en-US";
+
+
+    speech.rate = 0.88;
+
+
+    speech.pitch = 1.0;
+
+
+    speech.volume = 1.0;
+
+
+    speech.onstart = function() {
+
+        speechSpeaking = true;
+
     };
-    const message = messages[event.error] || ("Voice recognition error: " + event.error);
-    $("voiceStatus").textContent = "❌ " + message;
-    $("response").textContent = "RAMATECH HOME AI: " + message;
-  };
-  recognition.onend = () => {
-    recognitionRunning = false;
-    if (!$("voiceStatus").textContent.startsWith("❌")) $("voiceStatus").textContent = "Ready Boss. Press SPEAK TO ALEXA.";
-  };
-  return true;
+
+
+    speech.onend = function() {
+
+        speechSpeaking = false;
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "Ready Boss. Press SPEAK TO ALEXA.";
+
+    };
+
+
+    speech.onerror = function(event) {
+
+        speechSpeaking = false;
+
+
+        console.log(
+
+            "Speech synthesis error:",
+
+            event
+
+        );
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "❌ Phone could not play the voice.";
+
+    };
+
+
+    window.speechSynthesis.speak(
+
+        speech
+
+    );
+
 }
+
+
+// =====================================================
+// WELCOME SPEECH
+// =====================================================
+
+function playWelcome() {
+
+
+    const welcome =
+
+        "Hi Boss. My name is Alexa. " +
+
+        "I am your RAMATECH HOME AI smart home assistant. " +
+
+        "I was designed, programmed and developed by Ramatechcode Lab " +
+
+        "to make life very easy for you. " +
+
+        "I can currently control your light, rope light, fan and television. " +
+
+        "I am ready to assist you Boss.";
+
+
+    speak(welcome);
+
+}
+
+
+// =====================================================
+// SPEECH RECOGNITION INITIALIZATION
+// =====================================================
+
+function setupRecognition() {
+
+
+    if (!SpeechRecognitionAPI) {
+
+
+        document.getElementById(
+
+            "browserStatus"
+
+        ).innerHTML =
+
+            "❌ This iPhone browser does not provide SpeechRecognition. Try the latest Safari or Chrome on iPhone.";
+
+
+        return false;
+
+    }
+
+
+    recognition =
+
+        new SpeechRecognitionAPI();
+
+
+    recognition.lang = "en-US";
+
+
+    recognition.continuous = false;
+
+
+    recognition.interimResults = false;
+
+
+    recognition.maxAlternatives = 1;
+
+
+    // =================================================
+    // START
+    // =================================================
+
+    recognition.onstart = function() {
+
+
+        recognitionRunning = true;
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "🎤 Listening Boss... Speak now.";
+
+
+        document.getElementById(
+
+            "browserStatus"
+
+        ).innerHTML =
+
+            "🟢 Microphone is listening.";
+
+    };
+
+
+    // =================================================
+    // RESULT
+    // =================================================
+
+    recognition.onresult =
+
+    function(event) {
+
+
+        recognitionRunning = false;
+
+
+        let transcript = "";
+
+
+        for (
+
+            let i = event.resultIndex;
+
+            i < event.results.length;
+
+            i++
+
+        ) {
+
+
+            if (
+
+                event.results[i].isFinal
+
+            ) {
+
+                transcript +=
+
+                    event.results[i][0]
+
+                    .transcript;
+
+            }
+
+        }
+
+
+        transcript =
+
+            transcript
+
+            .toLowerCase()
+
+            .trim();
+
+
+        console.log(
+
+            "VOICE RESULT:",
+
+            transcript
+
+        );
+
+
+        document.getElementById(
+
+            "transcript"
+
+        ).innerHTML =
+
+            "You said: " +
+
+            transcript;
+
+
+        if (!transcript) {
+
+
+            speak(
+
+                "Sorry Boss. I could not hear the command."
+
+            );
+
+
+            return;
+
+        }
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "🧠 Processing...";
+
+
+        processVoiceCommand(
+
+            transcript
+
+        );
+
+    };
+
+
+    // =================================================
+    // ERROR
+    // =================================================
+
+    recognition.onerror =
+
+    function(event) {
+
+
+        recognitionRunning = false;
+
+
+        console.log(
+
+            "VOICE ERROR:",
+
+            event.error
+
+        );
+
+
+        let message = "";
+
+
+        switch (
+
+            event.error
+
+        ) {
+
+
+            case "not-allowed":
+
+                message =
+
+                    "Microphone permission is blocked. Please allow microphone access for this website in your iPhone settings.";
+
+                break;
+
+
+            case "service-not-allowed":
+
+                message =
+
+                    "The iPhone speech recognition service is not available in this browser.";
+
+                break;
+
+
+            case "no-speech":
+
+                message =
+
+                    "I did not hear you Boss. Please press the button and speak clearly.";
+
+                break;
+
+
+            case "audio-capture":
+
+                message =
+
+                    "I cannot access your iPhone microphone.";
+
+                break;
+
+
+            case "network":
+
+                message =
+
+                    "Speech recognition needs an internet connection on this browser. Check your internet connection.";
+
+                break;
+
+
+            case "aborted":
+
+                message =
+
+                    "Voice recognition was stopped.";
+
+                break;
+
+
+            default:
+
+                message =
+
+                    "Voice recognition error: " +
+
+                    event.error;
+
+                break;
+
+        }
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "❌ " +
+
+            message;
+
+
+        // Do not speak an error over the microphone
+
+        document.getElementById(
+
+            "response"
+
+        ).innerHTML =
+
+            "RAMATECH HOME AI: " +
+
+            message;
+
+    };
+
+
+    // =================================================
+    // END
+    // =================================================
+
+    recognition.onend = function() {
+
+
+        recognitionRunning = false;
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "Ready Boss. Press SPEAK TO ALEXA.";
+
+    };
+
+
+    // =================================================
+    // NO MATCH
+    // =================================================
+
+    recognition.onnomatch = function() {
+
+
+        recognitionRunning = false;
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "❌ I could not understand the speech.";
+
+
+        speak(
+
+            "Sorry Boss. I could not understand what you said."
+
+        );
+
+    };
+
+
+    return true;
+
+}
+
+
+// =====================================================
+// START VOICE
+// =====================================================
+
 function startVoice() {
-  if (!SpeechRecognitionAPI) {
-    $("browserStatus").textContent = "Speech recognition is unavailable in this browser. You can still use the buttons and test text-to-speech.";
-    return;
-  }
-  if (recognition) { try { recognition.abort(); } catch(e) {} }
-  if (!setupRecognition()) return;
-  try { recognition.start(); }
-  catch(e) { $("voiceStatus").textContent = "Could not start microphone. Tap SPEAK TO ALEXA again."; }
+
+
+    // Stop phone speech
+
+    if (
+
+        "speechSynthesis" in window
+
+    ) {
+
+        window.speechSynthesis.cancel();
+
+    }
+
+
+    // Create recognition if necessary
+
+    if (!recognition) {
+
+
+        if (!setupRecognition()) {
+
+
+            // Give a useful response
+
+            document.getElementById(
+
+                "response"
+
+            ).innerHTML =
+
+                "RAMATECH HOME AI: " +
+
+                "Voice recognition is not available in this browser.";
+
+            return;
+
+        }
+
+    }
+
+
+    if (recognitionRunning) {
+
+        return;
+
+    }
+
+
+    document.getElementById(
+
+        "voiceStatus"
+
+    ).innerHTML =
+
+        "🎤 Opening microphone...";
+
+
+    try {
+
+
+        recognition.start();
+
+
+    }
+
+    catch(error) {
+
+
+        console.log(
+
+            "START ERROR:",
+
+            error
+
+        );
+
+
+        recognitionRunning = false;
+
+
+        document.getElementById(
+
+            "voiceStatus"
+
+        ).innerHTML =
+
+            "❌ Could not start microphone. Try again.";
+
+    }
+
 }
+
+
+// =====================================================
+// STOP VOICE
+// =====================================================
+
 function stopVoice() {
-  if (recognition) { try { recognition.stop(); } catch(e) {} }
-  recognitionRunning = false;
-  if ("speechSynthesis" in window) window.speechSynthesis.cancel();
-  speechSpeaking = false;
-  $("voiceStatus").textContent = "Voice stopped.";
+
+
+    if (
+
+        recognition &&
+
+        recognitionRunning
+
+    ) {
+
+
+        try {
+
+            recognition.stop();
+
+        }
+
+        catch(error) {
+
+            console.log(error);
+
+        }
+
+    }
+
+
+    if (
+
+        "speechSynthesis" in window
+
+    ) {
+
+        window.speechSynthesis.cancel();
+
+    }
+
+
+    recognitionRunning = false;
+
+
+    document.getElementById(
+
+        "voiceStatus"
+
+    ).innerHTML =
+
+        "Voice stopped. Ready Boss.";
+
 }
 
-// Appliance voice commands
-function processVoiceCommand(command) {
-  command = command.toLowerCase().replace(/[.,!?]/g," ").trim();
 
-  if (command.includes("how are you")) return speak("I am working properly, Boss. Thank you for asking.");
-  if (command.includes("your name") || command.includes("who are you")) return speak("My name is Alexa, your RAMATECH HOME AI smart home assistant.");
-  if (command.includes("who made you") || command.includes("who developed you") || command.includes("who programmed you")) return speak("I was designed, programmed and developed by Ramatechcode Lab.");
-  if (command.includes("thank you") || command.includes("thanks")) return speak("You are welcome, Boss. I am always ready to assist you.");
-  if (command.includes("hello") || command.includes("good morning") || command.includes("good afternoon") || command.includes("good evening")) return speak("Hello Boss. I am ready to assist you.");
+// =====================================================
+// CLEAN COMMAND
+// =====================================================
 
-  const wantsOn = /\b(on|open|start|activate)\b/.test(command) || command.includes("turn on") || command.includes("switch on");
-  const wantsOff = /\b(off|close|stop|deactivate)\b/.test(command) || command.includes("turn off") || command.includes("switch off");
+function cleanCommand(command) {
 
-  if ((command.includes("all") || command.includes("everything")) && (wantsOn || wantsOff)) {
-    const state = wantsOn ? "on" : "off";
-    allControl(state).then(ok => { if(ok) speak("Alright Boss. All devices are now " + state + "."); });
-    return;
-  }
 
-  if (command.includes("status") || command.includes("what is on") || command.includes("what's on") || command.includes("how is the house")) {
-    requestCloudStatus().then(() => {
-      const s = remoteStatus;
-      speak("Alright Boss. The light is " + (s.light ? "on" : "off") +
-        ". The rope light is " + (s.rope ? "on" : "off") +
-        ". The fan is " + (s.fan ? "on" : "off") +
-        ". The television is " + (s.tv ? "on" : "off") + ".");
-    }).catch(() => speak("Sorry Boss. Please connect to the cloud to get the home status."));
-    return;
-  }
+    command =
 
-  let device = "";
-  if (command.includes("rope")) device = "rope";
-  else if (command.includes("light")) device = "light";
-  else if (command.includes("fan")) device = "fan";
-  else if (command.includes("television") || /\btv\b/.test(command)) device = "tv";
+        command
 
-  if (device && (wantsOn || wantsOff)) {
-    const state = wantsOn ? "on" : "off";
-    control(device,state).then(ok => {
-      if (ok) speak("Alright Boss. " + ({light:"Light",rope:"Rope light",fan:"Fan",tv:"Television"}[device]) + " turned " + state + ".");
-    });
-    return;
-  }
-  speak("Sorry Boss. I heard you, but I do not understand that command yet.");
+        .toLowerCase()
+
+        .trim();
+
+
+    // Remove punctuation
+
+    command =
+
+        command.replace(
+
+            /[.,!?;:]/g,
+
+            " "
+
+        );
+
+
+    // Common Alexa variations
+
+    command =
+
+        command.replace(
+
+            /\bhey alexa\b/g,
+
+            " "
+
+        );
+
+
+    command =
+
+        command.replace(
+
+            /\bokay alexa\b/g,
+
+            " "
+
+        );
+
+
+    command =
+
+        command.replace(
+
+            /\bok alexa\b/g,
+
+            " "
+
+        );
+
+
+    command =
+
+        command.replace(
+
+            /\balexa\b/g,
+
+            " "
+
+        );
+
+
+    // Remove extra spaces
+
+    command =
+
+        command
+
+        .replace(/\s+/g, " ")
+
+        .trim();
+
+
+    return command;
+
 }
+
+
+// =====================================================
+// PROCESS VOICE COMMAND
+// =====================================================
+
+function processVoiceCommand(
+
+    originalCommand
+
+) {
+
+
+    let command =
+
+        cleanCommand(
+
+            originalCommand
+
+        );
+
+
+    console.log(
+
+        "Original command:",
+
+        originalCommand
+
+    );
+
+
+    console.log(
+
+        "Clean command:",
+
+        command
+
+    );
+
+
+    // =================================================
+    // JUST ALEXA
+    // =================================================
+
+    if (
+
+        command === ""
+
+    ) {
+
+
+        speak(
+
+            "Yes Boss. How can I assist you?"
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // HOW ARE YOU
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "how are you"
+
+        ) ||
+
+        command.includes(
+
+            "how are u"
+
+        ) ||
+
+        command.includes(
+
+            "how r you"
+
+        ) ||
+
+        command.includes(
+
+            "how r u"
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "I am doing fine Boss. Thank you for asking. I am ready to control your smart home for you."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // NAME
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "what is your name"
+
+        ) ||
+
+        command.includes(
+
+            "whats your name"
+
+        ) ||
+
+        command === "your name"
+
+    ) {
+
+
+        speak(
+
+            "My name is Alexa. I am your RAMATECH HOME AI smart home assistant."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // WHO ARE YOU
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "who are you"
+
+        ) ||
+
+        command.includes(
+
+            "introduce yourself"
+
+        ) ||
+
+        command.includes(
+
+            "tell me about yourself"
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "Hi Boss. My name is Alexa. I am your RAMATECH HOME AI smart home assistant. I was designed, programmed and developed by Ramatechcode Lab to make life very easy for you."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // WHO DEVELOPED YOU
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "who developed you"
+
+        ) ||
+
+        command.includes(
+
+            "who made you"
+
+        ) ||
+
+        command.includes(
+
+            "who programmed you"
+
+        ) ||
+
+        command.includes(
+
+            "who created you"
+
+        ) ||
+
+        command.includes(
+
+            "who designed you"
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "I was designed, programmed and developed by Ramatechcode Lab."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // APPLIANCES
+    // =================================================
+
+    if (
+
+        (
+
+            command.includes(
+
+                "what appliances"
+
+            ) ||
+
+            command.includes(
+
+                "which appliances"
+
+            )
+
+        )
+
+        &&
+
+        (
+
+            command.includes(
+
+                "power"
+
+            ) ||
+
+            command.includes(
+
+                "control"
+
+            ) ||
+
+            command.includes(
+
+                "currently"
+
+            )
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "Alright Boss. I can currently power and control four appliances: the light, the rope light, the fan, and the television."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // WHAT CAN YOU CONTROL
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "what can you control"
+
+        ) ||
+
+        command.includes(
+
+            "what can you power"
+
+        ) ||
+
+        command.includes(
+
+            "what appliances can you power"
+
+        ) ||
+
+        command.includes(
+
+            "what devices can you control"
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "Alright Boss. I can currently control the light, rope light, fan and television."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // HELLO
+    // =================================================
+
+    if (
+
+        command === "hello" ||
+
+        command === "hi" ||
+
+        command === "hey"
+
+    ) {
+
+
+        speak(
+
+            "Hello Boss. I am ready to assist you."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // THANK YOU
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "thank you"
+
+        ) ||
+
+        command.includes(
+
+            "thanks"
+
+        )
+
+    ) {
+
+
+        speak(
+
+            "You are welcome Boss. I am always ready to assist you."
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // ALL ON
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "all on"
+
+        ) ||
+
+        command.includes(
+
+            "everything on"
+
+        ) ||
+
+        command.includes(
+
+            "all devices on"
+
+        ) ||
+
+        command.includes(
+
+            "turn everything on"
+
+        ) ||
+
+        command.includes(
+
+            "turn all on"
+
+        )
+
+    ) {
+
+
+        allControl("on")
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. All devices are now on."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn on all the devices."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // ALL OFF
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "all off"
+
+        ) ||
+
+        command.includes(
+
+            "everything off"
+
+        ) ||
+
+        command.includes(
+
+            "all devices off"
+
+        ) ||
+
+        command.includes(
+
+            "turn everything off"
+
+        ) ||
+
+        command.includes(
+
+            "turn all off"
+
+        )
+
+    ) {
+
+
+        allControl("off")
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. All devices are now off."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn off all the devices."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // ROPE LIGHT ON
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "rope"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("on") ||
+
+            command.includes("turn on") ||
+
+            command.includes("switch on")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "rope",
+
+            "on"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Rope light turned on."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn on the rope light."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // ROPE LIGHT OFF
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "rope"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("off") ||
+
+            command.includes("turn off") ||
+
+            command.includes("switch off")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "rope",
+
+            "off"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Rope light turned off."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn off the rope light."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // LIGHT ON
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "light"
+
+        )
+
+        &&
+
+        !command.includes(
+
+            "rope"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("on") ||
+
+            command.includes("turn on") ||
+
+            command.includes("switch on")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "light",
+
+            "on"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Light turned on."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn on the light."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // LIGHT OFF
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "light"
+
+        )
+
+        &&
+
+        !command.includes(
+
+            "rope"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("off") ||
+
+            command.includes("turn off") ||
+
+            command.includes("switch off")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "light",
+
+            "off"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Light turned off."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn off the light."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // FAN ON
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "fan"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("on") ||
+
+            command.includes("turn on") ||
+
+            command.includes("switch on")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "fan",
+
+            "on"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Fan turned on."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn on the fan."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // FAN OFF
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "fan"
+
+        )
+
+        &&
+
+        (
+
+            command.includes("off") ||
+
+            command.includes("turn off") ||
+
+            command.includes("switch off")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "fan",
+
+            "off"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Fan turned off."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn off the fan."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // TV ON
+    // =================================================
+
+    if (
+
+        (
+
+            command.includes("tv") ||
+
+            command.includes("television")
+
+        )
+
+        &&
+
+        (
+
+            command.includes("on") ||
+
+            command.includes("turn on") ||
+
+            command.includes("switch on")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "tv",
+
+            "on"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Television turned on."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn on the television."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // TV OFF
+    // =================================================
+
+    if (
+
+        (
+
+            command.includes("tv") ||
+
+            command.includes("television")
+
+        )
+
+        &&
+
+        (
+
+            command.includes("off") ||
+
+            command.includes("turn off") ||
+
+            command.includes("switch off")
+
+        )
+
+    ) {
+
+
+        control(
+
+            "tv",
+
+            "off"
+
+        )
+
+        .then(
+
+            function() {
+
+                speak(
+
+                    "Alright Boss. Television turned off."
+
+                );
+
+            }
+
+        )
+
+        .catch(
+
+            function() {
+
+                speak(
+
+                    "Sorry Boss. I could not turn off the television."
+
+                );
+
+            }
+
+        );
+
+
+        return;
+
+    }
+
+
+    // =================================================
+    // STATUS
+    // =================================================
+
+    if (
+
+        command.includes(
+
+            "status"
+
+        ) ||
+
+        command.includes(
+
+            "home status"
+
+        ) ||
+
+        command.includes(
+
+            "how is the house"
+
+        ) ||
+
+        command.includes(
+
+            "what is on"
+
+        ) ||
+
+        command.includes(
+
+            "what's on"
+
+        )
+
+    ) {
+
+
+        getStatusVoice();
+
+        return;
+
+    }
+
+
+    // =================================================
+    // UNKNOWN
+    // =================================================
+
+    speak(
+
+        "Sorry Boss. I heard you, but I do not understand that command yet."
+
+    );
+
+}
+
+
+// =====================================================
+// STATUS VOICE
+// =====================================================
+
+function getStatusVoice() {
+
+
+    fetch("/status")
+
+    .then(
+
+        response => {
+
+            if (!response.ok) {
+
+                throw new Error(
+
+                    "Status unavailable"
+
+                );
+
+            }
+
+            return response.json();
+
+        }
+
+    )
+
+    .then(
+
+        data => {
+
+
+            let message =
+
+                "Alright Boss. ";
+
+
+            message +=
+
+                "The light is " +
+
+                (
+
+                    data.light
+
+                    ? "on"
+
+                    : "off"
+
+                ) +
+
+                ". ";
+
+
+            message +=
+
+                "The rope light is " +
+
+                (
+
+                    data.rope
+
+                    ? "on"
+
+                    : "off"
+
+                ) +
+
+                ". ";
+
+
+            message +=
+
+                "The fan is " +
+
+                (
+
+                    data.fan
+
+                    ? "on"
+
+                    : "off"
+
+                ) +
+
+                ". ";
+
+
+            message +=
+
+                "The television is " +
+
+                (
+
+                    data.tv
+
+                    ? "on"
+
+                    : "off"
+
+                ) +
+
+                ".";
+
+
+            speak(message);
+
+        }
+
+    )
+
+    .catch(
+
+        error => {
+
+            console.log(error);
+
+
+            speak(
+
+                "Sorry Boss. I cannot get the current home status."
+
+            );
+
+        }
+
+    );
+
+}
+
+
+// =====================================================
+// BROWSER SUPPORT STATUS
+// =====================================================
 
 function checkBrowserSupport() {
-  $("browserStatus").textContent = SpeechRecognitionAPI
-    ? "🟢 Voice recognition is available in this browser."
-    : "🔴 Speech recognition is unavailable in this browser. Text-to-speech and buttons may still work.";
+
+
+    if (SpeechRecognitionAPI) {
+
+
+        document.getElementById(
+
+            "browserStatus"
+
+        ).innerHTML =
+
+            "🟢 Voice recognition is available in this browser. Tap SPEAK TO ALEXA.";
+
+    }
+
+    else {
+
+
+        document.getElementById(
+
+            "browserStatus"
+
+        ).innerHTML =
+
+            "🔴 Speech recognition is not available in this browser.";
+
+    }
+
+
+    if (
+
+        "speechSynthesis" in window
+
+    ) {
+
+
+        console.log(
+
+            "Speech synthesis available"
+
+        );
+
+    }
+
+    else {
+
+
+        console.log(
+
+            "Speech synthesis unavailable"
+
+        );
+
+    }
+
 }
 
-// Event wiring for sliders and settings
-["rateRange","pitchRange"].forEach(id => $(id).addEventListener("input", updateSliderLabels));
-["accentSelect","genderSelect"].forEach(id => $(id).addEventListener("change", () => {
-  // Clear manual voice so automatic accent/gender selection can take effect.
-  $("voiceSelect").value = "";
-}));
-$("voiceSelect").addEventListener("change", () => {
-  $("settingsStatus").textContent = "Voice selection changed. Tap TEST VOICE to hear it, then Save Settings.";
-});
 
-loadVoiceSettings();
-refreshVoiceList();
-if ("speechSynthesis" in window) {
-  window.speechSynthesis.onvoiceschanged = refreshVoiceList;
-  // iOS can populate its voices after initial page load.
-  setTimeout(refreshVoiceList, 500);
-  setTimeout(refreshVoiceList, 1500);
-}
-updateSliderLabels();
+// =====================================================
+// INITIALIZATION
+// =====================================================
+
 checkBrowserSupport();
-if (cloudAccessCode) connectCloud();
-updateStatus();
-setInterval(updateStatus, 2500);
 
-// Service worker kept for PWA support. Bump sw.js cache version when updating
-// the app so an older cached HTML file does not hide these new controls.
+if (cloudAccessCode) connectCloud();
+
+updateStatus();
+
+
+setInterval(
+
+    updateStatus,
+
+    2000
+
+);
+
+
+</script>
+
+
+<script>
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", async () => {
     try {
-      const registration = await navigator.serviceWorker.register("/sw.js");
-      if (registration.waiting) registration.waiting.postMessage({type:"SKIP_WAITING"});
-      console.log("RAMATECH HOME AI PWA ready", registration);
+      await navigator.serviceWorker.register("/sw.js");
+      console.log("RAMATECH HOME AI PWA is ready.");
     } catch (error) {
       console.error("Service worker registration failed:", error);
     }
   });
 }
 </script>
+
 </body>
+
+<!-- RAMATECH HOME AI Android App Download -->
+<section id="android-download" style="
+    margin: 30px auto;
+    padding: 25px;
+    max-width: 650px;
+    text-align: center;
+    background: #0f172a;
+    color: #ffffff;
+    border: 1px solid #38bdf8;
+    border-radius: 18px;
+    font-family: Arial, sans-serif;
+">
+    <h2 style="color: #38bdf8;">RAMATECH HOME AI Android App</h2>
+
+    <p>
+        Download the RAMATECH HOME AI Android application
+        and access your smart home dashboard from your phone.
+    </p>
+
+    <a href="/downloads/ramatech-home-ai.apk"
+       download="ramatech-home-ai.apk"
+       style="
+           display: inline-block;
+           padding: 15px 24px;
+           background: #38bdf8;
+           color: #0f172a;
+           font-weight: bold;
+           text-decoration: none;
+           border-radius: 10px;
+       ">
+        Download Android App (APK)
+    </a>
+
+    <p style="font-size: 13px; margin-top: 15px; color: #cbd5e1;">
+        After downloading, open the APK on your Android phone
+        and follow the installation instructions.
+    </p>
+</section>
+
 </html>
