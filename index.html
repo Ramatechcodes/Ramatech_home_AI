@@ -1570,6 +1570,35 @@ function cleanCommand(command) {
 // PROCESS VOICE COMMAND
 // =====================================================
 
+function displayOnESP32(message) {
+    // Additive: forward the command text to the ESP32 LCD via the existing cloud socket.
+    if (!cloudConnected || !cloudSocket || cloudSocket.readyState !== WebSocket.OPEN) return;
+    try {
+        cloudSocket.send(JSON.stringify({
+            type: "display",
+            deviceId: "RAMATECH_HOME_01",
+            line1: "VOICE COMMAND:",
+            line2: String(message || "").slice(0, 16)
+        }));
+    } catch (e) { console.log("LCD display message could not be sent", e); }
+}
+
+function speakDateTime(which) {
+    const now = new Date();
+    const dateText = new Intl.DateTimeFormat("en-NG", {
+        weekday: "long", day: "numeric", month: "long", year: "numeric"
+    }).format(now);
+    const timeText = new Intl.DateTimeFormat("en-NG", {
+        hour: "numeric", minute: "2-digit", hour12: true, timeZone: "Africa/Lagos"
+    }).format(now);
+    let reply;
+    if (which === "date") reply = "Today is " + dateText + ".";
+    else if (which === "time") reply = "The current time in Nigeria is " + timeText + ".";
+    else reply = "Today is " + dateText + ". The current time in Nigeria is " + timeText + ".";
+    speak(reply);
+    displayOnESP32(which === "date" ? dateText : which === "time" ? timeText : dateText + " " + timeText);
+}
+
 function processVoiceCommand(
 
     originalCommand
@@ -1584,6 +1613,27 @@ function processVoiceCommand(
             originalCommand
 
         );
+
+    // Additive date/time commands and LCD feedback; all existing commands remain below.
+    displayOnESP32(originalCommand);
+    const dateTimeQuery = command.toLowerCase();
+    if ((dateTimeQuery.includes("date") && dateTimeQuery.includes("time")) ||
+        dateTimeQuery.includes("what is the date and time") ||
+        dateTimeQuery.includes("current date and time")) {
+        speakDateTime("both");
+        return;
+    }
+    if ((dateTimeQuery.includes("today") && (dateTimeQuery.includes("date") || dateTimeQuery.includes("day"))) ||
+        dateTimeQuery.includes("what is today's date") || dateTimeQuery.includes("what is todays date") ||
+        dateTimeQuery === "date") {
+        speakDateTime("date");
+        return;
+    }
+    if (dateTimeQuery.includes("what time") || dateTimeQuery.includes("current time") ||
+        dateTimeQuery.includes("tell me the time") || dateTimeQuery === "time") {
+        speakDateTime("time");
+        return;
+    }
 
 
     console.log(

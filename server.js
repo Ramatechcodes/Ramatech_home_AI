@@ -125,7 +125,7 @@ wss.on("connection", (ws) => {
     }
 
     // BROWSER COMMAND
-    if (ws.role === "browser" && (msg.type === "command" || msg.type === "all" || msg.type === "status_request")) {
+    if (ws.role === "browser" && (msg.type === "command" || msg.type === "all" || msg.type === "status_request" || msg.type === "display")) {
       if (!deviceSocket || deviceSocket.readyState !== WebSocket.OPEN) {
         return send(ws, { type: "device_offline" });
       }
