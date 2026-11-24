@@ -22,6 +22,7 @@ const DEVICE_TIMEOUT = 45000;
 
 let deviceSocket = null;
 let lastDeviceSeen = 0;
+const pendingMeterRequests = new Map();
 
 const latestStatus = {
   type: "status",
@@ -30,7 +31,12 @@ const latestStatus = {
   light: false,
   rope: false,
   fan: false,
-  tv: false
+  tv: false,
+  mode: "HOME_AI",
+  prepaidSeconds: 0,
+  prepaidMinutes: 0,
+  prepaidActive: false,
+  loadActive: false
 };
 
 function safeEqual(a, b) {
@@ -125,7 +131,33 @@ function updateDeviceStatus(data) {
 function validateAppliance(device) {
   return ["light", "rope", "fan", "tv"].includes(device);
 }
+function requestMeterAction(message, timeoutMs = 12000) {
+  return new Promise((resolve, reject) => {
+    if (!isDeviceOnline()) {
+      reject(new Error("esp32_offline"));
+      return;
+    }
 
+    const requestId = crypto.randomUUID();
+
+    const timer = setTimeout(() => {
+      pendingMeterRequests.delete(requestId);
+      reject(new Error("esp32_confirmation_timeout"));
+    }, timeoutMs);
+
+    pendingMeterRequests.set(requestId, {
+      resolve,
+      reject,
+      timer
+    });
+
+    if (!sendToDevice({ ...message, requestId })) {
+      clearTimeout(timer);
+      pendingMeterRequests.delete(requestId);
+      reject(new Error("command_not_sent"));
+    }
+  });
+}
 app.get("/", (req, res) => {
   res.json({
     ok: true,
@@ -241,18 +273,101 @@ app.post("/api/bridge/command", bridgeAuth, (req, res) => {
 
 // Meter endpoints deliberately report that firmware support is not installed.
 // They must not pretend to credit or activate prepaid power.
-function meterNotImplemented(req, res) {
-  res.status(501).json({
-    ok: false,
-    error: "meter_firmware_not_implemented",
-    message: "The connected ESP32 firmware does not yet implement prepaid-meter functions."
+// PREPAID METER STATUS
+app.get("/api/bridge/meter/status", bridgeAuth, (req, res) => {
+  if (!isDeviceOnline()) {
+    return res.status(503).json({
+      ok: false,
+      error: "esp32_offline"
+    });
+  }
+
+  sendToDevice({ type: "status_request" });
+
+  return res.json({
+    ok: true,
+    deviceOnline: true,
+    status: { ...latestStatus }
   });
-}
+});
 
-app.get("/api/bridge/meter/status", bridgeAuth, meterNotImplemented);
-app.post("/api/bridge/meter/topup", bridgeAuth, meterNotImplemented);
-app.post("/api/bridge/meter/mode", bridgeAuth, meterNotImplemented);
+// PREPAID METER TOP-UP
+app.post("/api/bridge/meter/topup", bridgeAuth, async (req, res) => {
+  const minutes = Number(req.body?.minutes);
 
+  if (!Number.isInteger(minutes) || minutes < 1 || minutes > 1440) {
+    return res.status(400).json({
+      ok: false,
+      error: "invalid_minutes"
+    });
+  }
+
+  try {
+    const result = await requestMeterAction({
+      type: "meter_topup",
+      minutes
+    });
+
+    if (!result.ok) {
+      return res.status(502).json({
+        ok: false,
+        error: "meter_topup_rejected",
+        result
+      });
+    }
+
+    return res.json({
+      ok: true,
+      ...result
+    });
+  } catch (error) {
+    const offline = error.message === "esp32_offline";
+
+    return res.status(offline ? 503 : 504).json({
+      ok: false,
+      error: error.message
+    });
+  }
+});
+
+// PREPAID METER MODE
+app.post("/api/bridge/meter/mode", bridgeAuth, async (req, res) => {
+  const mode = String(req.body?.mode || "").toUpperCase();
+
+  if (!["HOME_AI", "PREPAID"].includes(mode)) {
+    return res.status(400).json({
+      ok: false,
+      error: "invalid_mode"
+    });
+  }
+
+  try {
+    const result = await requestMeterAction({
+      type: "meter_mode",
+      mode
+    });
+
+    if (!result.ok) {
+      return res.status(502).json({
+        ok: false,
+        error: "meter_mode_rejected",
+        result
+      });
+    }
+
+    return res.json({
+      ok: true,
+      ...result
+    });
+  } catch (error) {
+    const offline = error.message === "esp32_offline";
+
+    return res.status(offline ? 503 : 504).json({
+      ok: false,
+      error: error.message
+    });
+  }
+});
 // WebSocket connections: ESP32 device and browser clients.
 wss.on("connection", (ws) => {
   ws.isAuthenticated = false;
@@ -349,6 +464,21 @@ wss.on("connection", (ws) => {
     // Messages received from the ESP32.
     if (ws.role === "device") {
       lastDeviceSeen = Date.now();
+            // Receive prepaid-meter confirmations from the ESP32.
+      if (
+        data.type === "meter_topup_result" ||
+        data.type === "meter_mode_result"
+      ) {
+        const pending = pendingMeterRequests.get(data.requestId);
+
+        if (pending) {
+          clearTimeout(pending.timer);
+          pendingMeterRequests.delete(data.requestId);
+          pending.resolve(data);
+        }
+
+        return;
+      }
 
       if (data.type === "status") {
         updateDeviceStatus(data);
